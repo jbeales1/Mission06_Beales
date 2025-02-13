@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Movie
+<!--Add a movie for-->
+<!--Category, Title, Year, Director, Rating (dropdown menu (G, PG, PG-13, R))), Edited (not required), Lent To (not required, yes/no (true/false) option), Notes (not required, limited to 25 characters)-->
+<h1>Add a Movie to Joel's Collection</h1>
+<!--using post method-->
+<form method="post"> 
+    <label asp-for="Category">Category:</label>
+    <input asp-for="Category" />
+    <br />
+    <label asp-for="Title">Title:</label>
+    <input asp-for="Title" />
+    <br />
+    <label asp-for="Year">Year:</label>
+    <input asp-for="Year" />
+    <br />
+    <label asp-for="Director">Director:</label>
+    <input asp-for="Director" />
+    <br />
+    <label asp-for="Rating">Rating:</label>
+    <select asp-for="Rating">
+        <option value="G">G</option>
+        <option value="PG">PG</option>
+        <option value="PG-13">PG-13</option>
+        <option value="R">R</option>
+    </select>
+    <br />
+    <label asp-for="Edited">Edited:</label>
+    <select asp-for="Edited">
+        <option value="">-- Select an option --</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <label asp-for="LentTo">Lent To:</label>
+    <input asp-for="LentTo"/>
+    <br />
+    <label asp-for="Notes">Notes:</label>
+    <input asp-for="Notes" maxlength="25"/>
+    <br />
+
+    <button type="submit">Submit Application</button>
+</form>
