@@ -3,6 +3,7 @@ using System.Xml;
 using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
 using Mission06_Beales.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mission06_Beales.Controllers
 {
@@ -26,12 +27,18 @@ namespace Mission06_Beales.Controllers
             return View();
         }
 
-        // movie collection page
+        // submit a movie page
         [HttpGet]
-        public IActionResult MovieCollection()
+        public IActionResult MovieCollection ()
         {
-            return View();
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("MovieCollection", new Movie());
         }
+
+
         // submit a movie form
         [HttpPost]
         public IActionResult MovieCollection(Movie response ) // we are going to receive an instance of a Movie
@@ -55,7 +62,7 @@ namespace Mission06_Beales.Controllers
 
         public IActionResult MovieCollectionDisplay()
         {
-            // Linq. SQLish language we use to pull data from the database in dotnet
+            // Linq. SQLish language we use to pull data from the database in dotnet --------------------------------------------------------------------------------
             var movies = _context.Movies
                 .Include(x => x.Category)
                 .OrderBy(x => x.Title)
@@ -72,7 +79,7 @@ namespace Mission06_Beales.Controllers
                 .Single(x => x.MovieId == id);
 
             ViewBag.Categories = _context.Categories
-                .OrderBy(x => x.Title)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
             return View("MovieCollection", movieToEdit);
@@ -90,7 +97,12 @@ namespace Mission06_Beales.Controllers
         public IActionResult Delete(int id)
         {
             var recordToDelete = _context.Movies
-                .Single(x => x.MovieId == id);
+                .SingleOrDefault(x => x.MovieId == id);
+
+            if (recordToDelete == null)
+            {
+                return NotFound();
+            }
 
             return View(recordToDelete);
         }
@@ -101,7 +113,7 @@ namespace Mission06_Beales.Controllers
             _context.Movies.Remove(movie); // remove the record that was just passed in
             _context.SaveChanges();
 
-            return View("MovieCollectionDisplay");
+            return RedirectToAction("MovieCollectionDisplay");
         }
 
     }

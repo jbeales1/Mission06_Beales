@@ -7,14 +7,14 @@ namespace Mission06_Beales.Models
     {
         [Key]
         [Required]
-        public int MovieID { get; set; }
-        [Required]
+        public int MovieId { get; set; }
 
+        //[Required]
         [ForeignKey("CategoryId")]
-        public int? CategoryId { get; set; }
-        public CategoryName? CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        public Category? Category { get; set; }
 
-        [Required(ErrorMessage = "Title must be entered.")]
+        [Required(ErrorMessage = "Must enter a title.")]
         public string Title { get; set; }
 
         [Required]
@@ -25,12 +25,13 @@ namespace Mission06_Beales.Models
 
         public string? Rating { get; set; }
 
-        public bool? Edited { get; set; }
+        [Required(ErrorMessage ="Must enter whether movies has been edited.")]
+        public bool Edited { get; set; }
 
         public string? LentTo { get; set; }
 
         [Required(ErrorMessage = "Must select whether movie copied to Plex.")]
-        public bool? CopiedToPlex { get; set; }
+        public bool CopiedToPlex { get; set; }
 
         [StringLength(25)]
         public string? Notes { get; set; }
