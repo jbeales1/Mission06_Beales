@@ -23,12 +23,12 @@
     </select>
     <br />
 
-    <label asp-for="Title">Title:</label>
-    <input asp-for="Title" />
+    <label asp-for="Title" >Title:</label>
+    <input asp-for="Title" required />
     <br />
 
     <label asp-for="Year">Year:</label>
-    <input asp-for="Year" />
+    <input asp-for="Year" required />
     <br />
 
     <label asp-for="Director">Director:</label>
@@ -46,7 +46,7 @@
     <br />
 
     <label asp-for="Edited">Edited:</label>
-    <select asp-for="Edited">
+    <select asp-for="Edited" required>
         <option value="">-- Select an option --</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
@@ -54,7 +54,7 @@
     <br />
 
     <label asp-for="CopiedToPlex">Copied To Plex:</label>
-    <select asp-for="CopiedToPlex">
+    <select asp-for="CopiedToPlex" required>
         <option value="">-- Select an option --</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
@@ -69,7 +69,7 @@
     <input asp-for="Notes" maxlength="25"/>
     <br />
 
-    <button type="submit">Submit Application</button>
+    <button type="submit">Submit Movie</button>
 
     <div asp-validation-summary="All"></div>
 
