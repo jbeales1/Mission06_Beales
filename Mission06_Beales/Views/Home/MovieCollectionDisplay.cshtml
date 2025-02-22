@@ -5,12 +5,15 @@
 }
 @{
 }
+<!--Page that displays all the movies in Joel's collection-->
+
 @model List<Movie>
 
 <table class="table table-bordered">
 
 	<thead class="fw-bold">
 		<tr>
+			<!--column names-->
 			<td>CategoryName</td>
 			<td>Title</td>
 			<td>Year</td>
@@ -24,12 +27,13 @@
 
 	</thead>
 
+	<!--for loop that displays each database row-->
 	@foreach (var x in Model)
 	{
 		<!--the at sign means C# code. we use a capital M to refer to the specific instance of the model that's come in -->
 		<tbody>
 			<tr>
-				<td>@x.Category.CategoryName</td>
+				<td>@x.Category?.CategoryName</td>
 				<td>@x.Title</td>
 				<td>@x.Year</td>
 				<td>@x.Director</td>

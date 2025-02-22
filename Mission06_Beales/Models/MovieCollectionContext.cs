@@ -12,9 +12,10 @@ namespace Mission06_Beales.Models
         // making a set of Movie instances. Movies is a table in the database
         public DbSet<Movie> Movies { get; set; }
 
+        // making a set of Category instances. Categories is a table in the database
         public DbSet<Category> Categories { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) // Seed data
+        protected override void OnModelCreating(ModelBuilder modelBuilder) // No seed data necessary since we are drawing from a premade database
         {
 
         }

@@ -4,6 +4,7 @@
 @{
 }
 @model Movie
+<!--Delete confirmation page-->
 <h2>Delete Confirmation</h2>
 <h3>@Model.Title</h3>
 <form method="post">
@@ -11,5 +12,5 @@
     <input type="hidden" asp-for="MovieId" />
 
     <button type="submit" class="btn btn-danger">Delete?</button>
-    <a class="btn btn-info" asp-controller="Home" asp-action="MovieCollectionDisplay">Cancel</a>
+    <a class="btn btn-info" asp-controller="Home" asp-action="MovieCollectionDisplay">Cancel</a> <!--Cancel button returns user to the movies display page-->
 </form>

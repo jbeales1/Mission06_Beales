@@ -2,6 +2,7 @@
 
 namespace Mission06_Beales.Models
 {
+    // Category class
     public class Category
     {
         [Key]

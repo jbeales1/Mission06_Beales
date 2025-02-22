@@ -5,6 +5,7 @@ namespace Mission06_Beales.Models
 {
     public class Movie // movie class containing all the movie info that will be gathered
     {
+        // MovieId, Title, Year, Edited, and CopyToPlex are all required fields
         [Key]
         [Required]
         public int MovieId { get; set; }

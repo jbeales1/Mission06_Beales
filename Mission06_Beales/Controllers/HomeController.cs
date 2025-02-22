@@ -59,10 +59,10 @@ namespace Mission06_Beales.Controllers
             }
         }
 
-
+        // display movie page
         public IActionResult MovieCollectionDisplay()
         {
-            // Linq. SQLish language we use to pull data from the database in dotnet --------------------------------------------------------------------------------
+            // Linq. SQLish language we use to pull data from the database in dotnet 
             var movies = _context.Movies
                 .Include(x => x.Category)
                 .OrderBy(x => x.Title)
@@ -71,7 +71,7 @@ namespace Mission06_Beales.Controllers
             return View(movies);
         }
 
-
+        // grab the movie to edit
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -85,6 +85,7 @@ namespace Mission06_Beales.Controllers
             return View("MovieCollection", movieToEdit);
         }
 
+        // update the previously grabbed movie
         [HttpPost]
         public IActionResult Edit(Movie updatedInfo)
         {
@@ -93,6 +94,8 @@ namespace Mission06_Beales.Controllers
             return RedirectToAction("MovieCollectionDisplay");
         }
 
+
+        // grab the movie to delete
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -107,6 +110,7 @@ namespace Mission06_Beales.Controllers
             return View(recordToDelete);
         }
 
+        // remove the movie that was grabbed
         [HttpPost]
         public IActionResult Delete(Movie movie)
         {
